@@ -5,6 +5,8 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
+require('./db');
+
 app.get('/', (req, res) => {
     res.send('Serveur Université actif ✅');
 });
@@ -12,3 +14,4 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log('Serveur lancé sur http://localhost:3000');
 });
+
