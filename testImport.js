@@ -10,7 +10,7 @@ const config = {
     columns: {
         matricule: "A",
         nom: "B",
-        moyenne_annuelle: "CH",
+        moyenne_annuelle: "CF",
         mention: "CK",
         decision_annuelle: "CL"
     },
