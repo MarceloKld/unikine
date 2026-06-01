@@ -91,32 +91,31 @@ function parseStudents(rows, config) {
 
 function extractUE(row, rows, UEconfig) {
 
-    const ligneIntitules = rows[0]; // Ligne 1
-    const ligneCredits = rows[1];   // Ligne 2
+    const ligneIntitules = rows[0];
+    const ligneCredits = rows[1];
 
     return {
 
         code: UEconfig.code,
 
-        // ✅ Intitulé UE = cellule de la colonne CC ligne 1
         intitule: ligneIntitules[colToIndex(UEconfig.CC)],
 
-        // ✅ Catégorie manuelle
         categorie: UEconfig.categorie,
 
-        // ✅ Crédit = ligne 2 colonne CC
+        // ✅ Crédit total UE
         credit: ligneCredits[colToIndex(UEconfig.CC)],
 
-        // ✅ EC automatiques
         ecs: UEconfig.ECs.map(col => ({
             intitule: ligneIntitules[colToIndex(col)],
+
+            // ✅ Crédit EC ajouté ici
+            credit: ligneCredits[colToIndex(col)],
+
             note: row[colToIndex(col)]
         })),
 
-        // ✅ Note CC étudiant
         cc: row[colToIndex(UEconfig.CC)],
 
-        // ✅ Cote pondérée
         cotePonderee: row[colToIndex(UEconfig.Pond)]
     };
 }
