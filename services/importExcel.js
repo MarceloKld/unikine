@@ -38,8 +38,8 @@ async function importExcel(filePath) {
     if (!sessionRows.length) {
 
         const [insert] = await db.promise().query(
-            "INSERT INTO sessions (code_session, departement, annee, universite, faculte, jury_president, jury_secretaire, lieu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            [code_session, departement, annee, universite, faculte, jury_president, jury_secretaire, lieu]
+            "INSERT INTO sessions (code_session, departement, annee, universite, faculte_filiere,niveau,bureau_jury, jury_president, jury_secretaire, lieu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [code_session, departement, annee, universite, faculte_filiere, niveau, bureau_jury, jury_president, jury_secretaire, lieu]
         );
 
         session_id = insert.insertId;
