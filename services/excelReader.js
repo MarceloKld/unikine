@@ -22,9 +22,10 @@ function readExcel(filePath, sheetName = null) {
 
     // Convertir en tableau brut
     const rows = xlsx.utils.sheet_to_json(worksheet, {
-        header: 1, // important → tableau simple
-        defval: null // cellules vides = null
-    });
+    header: 1,
+    defval: null,
+    raw: false   // ✅ IMPORTANT
+});
 
     return rows;
 }
