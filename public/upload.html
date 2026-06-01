@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Import Excel</title>
+</head>
+<body>
+
+    <h2>Importer une grille Excel</h2>
+
+    <form id="uploadForm">
+        <input type="file" name="file" id="fileInput" required />
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <pre id="result"></pre>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const resultBox = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('fileInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            const response = await fetch('/api/import', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            resultBox.textContent = JSON.stringify(result, null, 2);
+        });
+    </script>
+
+</body>
+</html>
