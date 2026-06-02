@@ -3,6 +3,10 @@ const app = express();
 const cors = require('cors');
 const importRoute = require('./routes/importRoute');
 const path = require('path');
+const pdfRoute = require('./routes/pdfRoute');
+
+
+app.use('/api', pdfRoute);
 
 // Servir les fichiers statiques
 app.use(express.static(path.join(__dirname, 'public')));
